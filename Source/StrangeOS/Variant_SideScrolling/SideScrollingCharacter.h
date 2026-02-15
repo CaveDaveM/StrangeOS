@@ -13,6 +13,13 @@ struct FInputActionValue;
 /**
  *  A player-controllable character side scrolling game
  */
+UENUM(BlueprintType)
+enum class EHealthState : uint8
+{
+	FullHealth = 0 UMETA(DisplayName = "Full Health"),
+	FirstHit = 1 UMETA(DisplayName = "FirstHit"),
+	Death = 2 UMETA(DisplayName = "Death"),
+};
 UCLASS(abstract)
 class ASideScrollingCharacter : public ACharacter
 {
@@ -21,6 +28,10 @@ class ASideScrollingCharacter : public ACharacter
 	/** Player camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Camera", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* Camera;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category ="Hitbot", meta = (AllowPrivateAccess = "true"))
+	UCapsuleComponent* HitBoxCapsule;
+	
 
 protected:
 
@@ -96,6 +107,12 @@ protected:
 
 	/** If true, this character is moving along the side scrolling axis */
 	bool bMovingHorizontally = false;
+	
+	UPROPERTY(ReplicatedUsing = OnRep_OnVariableRepTest)
+	EHealthState HealthState = EHealthState::FullHealth;
+	
+	UFUNCTION()
+	void OnRep_OnVariableRepTest();
 
 public:
 	
@@ -107,6 +124,7 @@ protected:
 	/** Gameplay cleanup */
 	virtual void EndPlay(EEndPlayReason::Type EndPlayReason) override;
 
+	virtual void BeginPlay() override;
 	/** Initialize input action bindings */
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -118,8 +136,10 @@ protected:
 
 	/** Handle movement mode changes to keep track of coyote time jumps */
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
-
-protected:
+	
+	UFUNCTION()
+	void CheckHealthPlayerState();
+	
 
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -129,6 +149,10 @@ protected:
 
 	/** Called for drop from platform input release */
 	void DropReleased(const FInputActionValue& Value);
+	
+	UFUNCTION(BlueprintCallable, Category="Input")
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 public:
 
@@ -167,8 +191,6 @@ public:
 
 	/** Sets the soft collision response. True passes, False blocks */
 	void SetSoftCollision(bool bEnabled);
-
-public:
 
 	/** Returns true if the character has just double jumped */
 	UFUNCTION(BlueprintPure, Category="Side Scrolling")

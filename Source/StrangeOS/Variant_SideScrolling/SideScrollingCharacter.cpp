@@ -13,6 +13,8 @@
 #include "SideScrollingInteractable.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "TimerManager.h"
+#include "Enemy/EnemyAI.h"
+
 
 ASideScrollingCharacter::ASideScrollingCharacter()
 {
@@ -54,7 +56,19 @@ ASideScrollingCharacter::ASideScrollingCharacter()
 
 	GetCharacterMovement()->SetPlaneConstraintNormal(FVector(0.0f, 1.0f, 0.0f));
 	GetCharacterMovement()->bConstrainToPlane = true;
-
+	
+	HitBoxCapsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Hitbox"));
+	HitBoxCapsule->SetupAttachment(RootComponent);
+	
+	// Configure collision settings
+	HitBoxCapsule->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	HitBoxCapsule->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
+	HitBoxCapsule->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+	
+	//TODO: ADD A CUSTOM CHANNEL
+	HitBoxCapsule->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	HitBoxCapsule->SetGenerateOverlapEvents(true);
+	
 	// enable double jump and coyote time
 	JumpMaxCount = 3;
 }
@@ -65,6 +79,12 @@ void ASideScrollingCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 
 	// clear the wall jump timer
 	GetWorld()->GetTimerManager().ClearTimer(WallJumpTimer);
+}
+
+void ASideScrollingCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	HitBoxCapsule->OnComponentBeginOverlap.AddDynamic(this, &ASideScrollingCharacter::OnOverlapBegin);
 }
 
 void ASideScrollingCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -89,6 +109,40 @@ void ASideScrollingCharacter::SetupPlayerInputComponent(class UInputComponent* P
 		EnhancedInputComponent->BindAction(DropAction, ETriggerEvent::Completed, this, &ASideScrollingCharacter::DropReleased);
 
 	}
+}
+void ASideScrollingCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (AEnemyAI* OverlappedEnemyAI = Cast<AEnemyAI>(OtherActor))
+	{
+		if (HealthState == EHealthState::FullHealth)
+		{
+			HealthState = EHealthState::FirstHit;
+		}
+		else if (HealthState == EHealthState::FirstHit)
+		{
+			HealthState = EHealthState::Death;
+		}
+	}
+}
+
+void ASideScrollingCharacter::OnRep_OnVariableRepTest()
+{
+	switch (HealthState) {
+	case EHealthState::FullHealth:
+		break;
+	case EHealthState::FirstHit:
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "First hit");
+		break;
+	case EHealthState::Death:
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Death hit");
+		break;
+	}
+}
+
+void ASideScrollingCharacter::CheckHealthPlayerState()
+{
+	
 }
 
 void ASideScrollingCharacter::NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
@@ -133,6 +187,7 @@ void ASideScrollingCharacter::OnMovementModeChanged(EMovementMode PrevMovementMo
 	}
 }
 
+
 void ASideScrollingCharacter::Move(const FInputActionValue& Value)
 {
 	FVector2D MoveVector = Value.Get<FVector2D>();
@@ -152,6 +207,7 @@ void ASideScrollingCharacter::DropReleased(const FInputActionValue& Value)
 	// reset the input
 	DoDrop(0.0f);
 }
+
 
 void ASideScrollingCharacter::DoMove(float Forward)
 {
