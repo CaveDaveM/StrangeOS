@@ -107,8 +107,8 @@ protected:
 
 	/** If true, this character is moving along the side scrolling axis */
 	bool bMovingHorizontally = false;
-	
-	UPROPERTY(ReplicatedUsing = OnRep_OnVariableRepTest)
+	// ReplicatedUsing = OnRep_OnVariableRepTest
+	UPROPERTY()
 	EHealthState HealthState = EHealthState::FullHealth;
 	
 	UFUNCTION()
