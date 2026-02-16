@@ -24,6 +24,7 @@ AEnemyAI::AEnemyAI()
 	EnemyMeshComponent->SetEnableGravity(false);
 	EnemyMeshComponent->SetCollisionObjectType(EOSCollisionChannel::ECC_Enemy);
 
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 
 

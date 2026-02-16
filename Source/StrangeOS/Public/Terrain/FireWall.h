@@ -19,7 +19,13 @@ public:
 	AFireWall();
 	
 	UPROPERTY(EditAnywhere)
-	float DamageOfObstacle = 25;
+	float DamageOfObstacle = 25.0f;
+	
+	UPROPERTY(EditAnywhere)
+	float DamageOfObstacleOverTime = 10.0f;
+	
+	UPROPERTY(EditAnywhere)
+	float DamageTimer = 0.5f;
 
 protected:
 	// Called when the game starts or when spawned
@@ -33,6 +39,18 @@ protected:
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
+	void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	
+	UFUNCTION()
+	void DamageEnemyOverTime();
+	
+	UPROPERTY()
+	TArray<AEnemyAI*> OverlappedEnemies;
+	
+	UPROPERTY()
+	FTimerHandle ApplyDamageToEnemy_TimerHandle;
 
 public:	
 	// Called every frame

@@ -30,6 +30,13 @@ void AFireWall::BeginPlay()
 	Super::BeginPlay();
 	
 	OverlapComponent->OnComponentBeginOverlap.AddDynamic(this, &AFireWall::OnOverlapBegin);
+	
+	GetWorld()->GetTimerManager().SetTimer(
+		ApplyDamageToEnemy_TimerHandle,
+		this,
+		&AFireWall::DamageEnemyOverTime,
+		DamageTimer,
+		true);
 }
 
 void AFireWall::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -38,6 +45,27 @@ void AFireWall::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor*
 	if (AEnemyAI* OverlappedActor = Cast<AEnemyAI>(OtherActor))
 	{
 		AEnemyAI* hitenemy = IDamageInterface::Execute_DamageEnemy(OverlappedActor,DamageOfObstacle);
+		OverlappedEnemies.Add(OverlappedActor);
+	}
+}
+
+void AFireWall::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (AEnemyAI* OverlappedActor = Cast<AEnemyAI>(OtherActor))
+	{
+		OverlappedEnemies.Remove(OverlappedActor);
+	}
+}
+
+void AFireWall::DamageEnemyOverTime()
+{
+	if (OverlappedEnemies.Num() != 0)
+	{
+		for (AEnemyAI* Enemies : OverlappedEnemies)
+		{
+			AEnemyAI* hitenemy = IDamageInterface::Execute_DamageEnemy(Enemies,DamageOfObstacleOverTime);
+		}
 	}
 }
 
