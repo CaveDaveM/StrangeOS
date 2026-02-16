@@ -14,6 +14,8 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "TimerManager.h"
 #include "Enemy/EnemyAI.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 
 
 ASideScrollingCharacter::ASideScrollingCharacter()
@@ -61,13 +63,11 @@ ASideScrollingCharacter::ASideScrollingCharacter()
 	HitBoxCapsule->SetupAttachment(RootComponent);
 	
 	// Configure collision settings
-	HitBoxCapsule->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	HitBoxCapsule->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
-	HitBoxCapsule->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
-	
-	//TODO: ADD A CUSTOM CHANNEL
-	HitBoxCapsule->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	HitBoxCapsule->SetGenerateOverlapEvents(true);
+	HitBoxCapsule->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	HitBoxCapsule->SetCollisionObjectType(ECollisionChannel::ECC_PhysicsBody);
+	HitBoxCapsule->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
+	//TODO: ADD A CUSTOM CHANNEL
 	
 	// enable double jump and coyote time
 	JumpMaxCount = 3;
@@ -118,31 +118,46 @@ void ASideScrollingCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp
 		if (HealthState == EHealthState::FullHealth)
 		{
 			HealthState = EHealthState::FirstHit;
+			CheckHealthPlayerState();
 		}
 		else if (HealthState == EHealthState::FirstHit)
 		{
 			HealthState = EHealthState::Death;
+			CheckHealthPlayerState();
 		}
+		
+		OverlappedEnemyAI->Destroy();
 	}
-}
-
-void ASideScrollingCharacter::OnRep_OnVariableRepTest()
-{
-	switch (HealthState) {
-	case EHealthState::FullHealth:
-		break;
-	case EHealthState::FirstHit:
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "First hit");
-		break;
-	case EHealthState::Death:
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Death hit");
-		break;
-	}
+	
 }
 
 void ASideScrollingCharacter::CheckHealthPlayerState()
 {
-	
+	switch (HealthState) {
+		case EHealthState::FullHealth:
+			{
+				UNiagaraComponent* NiagaraHealing = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+					DamageEffect, 
+					GetActorLocation(),
+					FRotator(0.f));
+				break;
+			}
+		case EHealthState::FirstHit:
+			{
+				UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+					DamageEffect, 
+					GetActorLocation(),
+					FRotator(0.f));
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "First hit");
+				break;
+			}
+		
+		case EHealthState::Death:
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Death hit");
+				break;
+			}
+	}
 }
 
 void ASideScrollingCharacter::NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
