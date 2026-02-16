@@ -34,8 +34,11 @@ void AEnemyAIController::Tick(float DeltaTime)
 	FVector PlayerLocation =  PlayerPawn->GetActorLocation();
 	FVector EnemyLocation = OwningPawn->GetActorLocation();
 	
-	FVector PlayerDirectionFromEnemy = (PlayerLocation - EnemyLocation) * DeltaTime * 7;
-	OwningPawn->EnemyMeshComponent->AddImpulse(PlayerDirectionFromEnemy,NAME_None, true);
+	FVector PlayerDirectionFromEnemy = (PlayerLocation - EnemyLocation);
+	PlayerDirectionFromEnemy.Normalize();
+	FVector AppliedDirection = PlayerDirectionFromEnemy * DeltaTime * 7000;
+
+	OwningPawn->EnemyMeshComponent->AddImpulse(AppliedDirection,NAME_None, true);
 	
 }
 

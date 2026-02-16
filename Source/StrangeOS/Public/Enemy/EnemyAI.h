@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Interface/DamageInterface.h"
 #include "EnemyAI.generated.h"
 
 class UNiagaraSystem;
 
 UCLASS()
-class STRANGEOS_API AEnemyAI : public APawn
+class STRANGEOS_API AEnemyAI : public APawn, public IDamageInterface
 {
 	GENERATED_BODY()
 
@@ -23,7 +24,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-
+	UPROPERTY(BlueprintReadWrite)
+	float Health = 100.0f;
 
 public:	
 	// Called every frame
@@ -37,4 +39,5 @@ public:
 	
 	UFUNCTION()
 	virtual void BeginDestroy() override;
+	virtual void DamageEnemy_Implementation(float Damage) override;
 };
