@@ -3,10 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Enemy/EnemyAI.h"
 #include "UObject/Interface.h"
 #include "DamageInterface.generated.h"
 
+class AEnemyAI;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UDamageInterface : public UInterface
