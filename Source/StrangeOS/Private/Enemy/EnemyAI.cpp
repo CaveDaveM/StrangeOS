@@ -5,6 +5,7 @@
 #include "Public/Enemy/EnemyAIController.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
+#include "OSCollisionChannels.h"
 
 DEFINE_LOG_CATEGORY(EnemyAILOG);
 
@@ -21,6 +22,7 @@ AEnemyAI::AEnemyAI()
 	
 	EnemyMeshComponent->SetSimulatePhysics(true);
 	EnemyMeshComponent->SetEnableGravity(false);
+	EnemyMeshComponent->SetCollisionObjectType(EOSCollisionChannel::ECC_Enemy);
 
 }
 
@@ -29,7 +31,6 @@ AEnemyAI::AEnemyAI()
 void AEnemyAI::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -37,6 +38,12 @@ void AEnemyAI::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AEnemyAI::DamageEnemy_Implementation(float Damage)
+{
+	IDamageInterface::DamageEnemy_Implementation(Damage);
+	Health -= Damage;
 }
 
 // Called to bind functionality to input
@@ -54,5 +61,6 @@ void AEnemyAI::BeginDestroy()
 		FRotator(0.f));
 	Super::BeginDestroy();
 }
+
 
 

@@ -13,6 +13,7 @@
 #include "SideScrollingInteractable.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
+#include "OSCollisionChannels.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "TimerManager.h"
 #include "Enemy/EnemyAI.h"
@@ -30,6 +31,7 @@ ASideScrollingCharacter::ASideScrollingCharacter()
 
 	// configure the collision capsule
 	GetCapsuleComponent()->SetCapsuleSize(35.0f, 90.0f);
+	GetMesh()->SetCollisionObjectType(EOSCollisionChannel::ECC_Player);
 
 	// configure the Pawn properties
 	bUseControllerRotationYaw = false;
@@ -65,8 +67,8 @@ ASideScrollingCharacter::ASideScrollingCharacter()
 	// Configure collision settings
 	HitBoxCapsule->SetGenerateOverlapEvents(true);
 	HitBoxCapsule->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	HitBoxCapsule->SetCollisionObjectType(ECollisionChannel::ECC_PhysicsBody);
-	HitBoxCapsule->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
+	HitBoxCapsule->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+	HitBoxCapsule->SetCollisionResponseToChannel(EOSCollisionChannel::ECC_Enemy,ECR_Overlap);
 	
 	//TODO: ADD A CUSTOM CHANNEL
 	// enable double jump and coyote time
@@ -151,6 +153,7 @@ void ASideScrollingCharacter::CheckHealthPlayerState()
 				FRotator(0.f));
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "First hit");
 			break;
+			
 		}
 
 	case EHealthState::Death:
