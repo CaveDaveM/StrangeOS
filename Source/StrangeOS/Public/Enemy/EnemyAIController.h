@@ -33,12 +33,4 @@ protected:
 	UPROPERTY()
 	FTimerHandle UpdateVelocity_TimerHandle;
 	
-	UFUNCTION()
-	void BeginMovement();
-	
-	UFUNCTION()
-	FVector GetPlayerLocation();
-	
-	UFUNCTION()
-	void MoveEnemyToPlayer();
 };

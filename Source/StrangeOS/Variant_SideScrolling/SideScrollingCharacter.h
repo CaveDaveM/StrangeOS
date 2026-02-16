@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "SideScrollingCharacter.generated.h"
 
+class UNiagaraSystem;
 class UCameraComponent;
 class UInputAction;
 struct FInputActionValue;
@@ -110,9 +111,6 @@ protected:
 	// ReplicatedUsing = OnRep_OnVariableRepTest
 	UPROPERTY()
 	EHealthState HealthState = EHealthState::FullHealth;
-	
-	UFUNCTION()
-	void OnRep_OnVariableRepTest();
 
 public:
 	
@@ -149,6 +147,12 @@ protected:
 
 	/** Called for drop from platform input release */
 	void DropReleased(const FInputActionValue& Value);
+	
+	UPROPERTY(EditAnywhere, Category = "Niagara Effects|Damaging ")
+	UNiagaraSystem* DamageEffect;
+	
+	UPROPERTY(EditAnywhere, Category = "Niagara Effects|Healing")
+	UNiagaraSystem* HealingEffect;
 	
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
