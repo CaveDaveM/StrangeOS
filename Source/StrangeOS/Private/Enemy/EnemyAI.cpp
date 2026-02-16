@@ -46,9 +46,21 @@ AEnemyAI* AEnemyAI::DamageEnemy_Implementation(float Damage)
 	IDamageInterface::DamageEnemy_Implementation(Damage);
 	Health -= Damage;
 	
+	CheckHealth();
+	
+#if 1 
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow,
 		FString::Printf(TEXT("current health %f"), Health));
+#endif
 	return this;
+}
+
+void AEnemyAI::CheckHealth()
+{
+	if (Health <= 0.f)
+	{
+		Destroy();
+	}
 }
 
 // Called to bind functionality to input

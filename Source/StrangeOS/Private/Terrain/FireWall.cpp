@@ -30,6 +30,7 @@ void AFireWall::BeginPlay()
 	Super::BeginPlay();
 	
 	OverlapComponent->OnComponentBeginOverlap.AddDynamic(this, &AFireWall::OnOverlapBegin);
+	OverlapComponent->OnComponentEndOverlap.AddDynamic(this, &AFireWall::OnOverlapEnd);
 	
 	GetWorld()->GetTimerManager().SetTimer(
 		ApplyDamageToEnemy_TimerHandle,

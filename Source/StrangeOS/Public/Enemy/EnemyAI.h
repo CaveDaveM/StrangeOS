@@ -41,5 +41,8 @@ public:
 	virtual void BeginDestroy() override;
 	
 	virtual AEnemyAI* DamageEnemy_Implementation(float Damage) override;
+	
+	UFUNCTION()
+	void CheckHealth();
 
 };

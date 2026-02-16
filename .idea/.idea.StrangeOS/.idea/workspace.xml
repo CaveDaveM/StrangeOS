@@ -13,7 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b11dfe1-1777-4f8f-ba41-113fa24cf082" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Terrain/FireWall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Terrain/FireWall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Terrain/FireWall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Terrain/FireWall.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +55,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Dawid__Upgrades",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
