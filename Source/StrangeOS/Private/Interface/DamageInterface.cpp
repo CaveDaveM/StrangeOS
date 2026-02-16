@@ -3,7 +3,4 @@
 
 #include "Interface/DamageInterface.h"
 
-void IDamageInterface::DamageEnemy_Implementation(float Damage)
-{
-	
-}
+

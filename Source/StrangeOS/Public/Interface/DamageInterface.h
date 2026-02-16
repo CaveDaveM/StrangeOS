@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Enemy/EnemyAI.h"
 #include "UObject/Interface.h"
 #include "DamageInterface.generated.h"
 
@@ -23,7 +24,5 @@ class STRANGEOS_API IDamageInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "MyInterface")
-	void DamageEnemy(float Damage);
-
-	virtual void DamageEnemy_Implementation(float Damage);
+	AEnemyAI* DamageEnemy(float Damage);
 };
