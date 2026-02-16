@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Public/Enemy/EnemyAI.h"
+#include "Enemy/EnemyAI.h"
 #include "Public/Enemy/EnemyAIController.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
@@ -40,10 +40,14 @@ void AEnemyAI::Tick(float DeltaTime)
 
 }
 
-void AEnemyAI::DamageEnemy_Implementation(float Damage)
+AEnemyAI* AEnemyAI::DamageEnemy_Implementation(float Damage)
 {
 	IDamageInterface::DamageEnemy_Implementation(Damage);
 	Health -= Damage;
+	
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow,
+		FString::Printf(TEXT("current health %f"), Health));
+	return this;
 }
 
 // Called to bind functionality to input

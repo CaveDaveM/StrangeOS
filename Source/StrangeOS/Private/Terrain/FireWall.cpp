@@ -3,6 +3,7 @@
 
 #include "Terrain/FireWall.h"
 
+#include "OSCollisionChannels.h"
 #include "Components/SphereComponent.h"
 #include "Enemy/EnemyAI.h"
 
@@ -17,9 +18,9 @@ AFireWall::AFireWall()
 	
 	OverlapComponent = CreateDefaultSubobject<USphereComponent>("OverlapSphere");
 	OverlapComponent->SetupAttachment(StaticMeshComponent);
-	
+
 	OverlapComponent->SetGenerateOverlapEvents(true);
-	OverlapComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
+	OverlapComponent->SetCollisionResponseToChannel(EOSCollisionChannel::ECC_Enemy,ECR_Overlap);
 	
 }
 
@@ -36,7 +37,7 @@ void AFireWall::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor*
 {
 	if (AEnemyAI* OverlappedActor = Cast<AEnemyAI>(OtherActor))
 	{
-		IDamageInterface::Execute_DamageEnemy(OverlappedActor,DamageOfObstacle);
+		AEnemyAI* hitenemy = IDamageInterface::Execute_DamageEnemy(OverlappedActor,DamageOfObstacle);
 	}
 }
 
@@ -44,6 +45,5 @@ void AFireWall::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor*
 void AFireWall::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 

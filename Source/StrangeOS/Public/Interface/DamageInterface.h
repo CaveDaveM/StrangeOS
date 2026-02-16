@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "DamageInterface.generated.h"
 
+class AEnemyAI;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UDamageInterface : public UInterface
@@ -23,7 +24,5 @@ class STRANGEOS_API IDamageInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "MyInterface")
-	void DamageEnemy(float Damage);
-
-	virtual void DamageEnemy_Implementation(float Damage);
+	AEnemyAI* DamageEnemy(float Damage);
 };

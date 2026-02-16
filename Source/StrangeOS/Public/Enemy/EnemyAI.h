@@ -39,5 +39,7 @@ public:
 	
 	UFUNCTION()
 	virtual void BeginDestroy() override;
-	virtual void DamageEnemy_Implementation(float Damage) override;
+	
+	virtual AEnemyAI* DamageEnemy_Implementation(float Damage) override;
+
 };
