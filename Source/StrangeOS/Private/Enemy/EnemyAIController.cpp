@@ -15,21 +15,23 @@ void AEnemyAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 	SetActorTickEnabled(true);
+	
+	OwningPawn = Cast<AEnemyAI>(InPawn);
+	if (!OwningPawn)
+	{
+		UE_LOG(EnemyAILOG,Warning,TEXT(" Not Found Owning Pawn"))
+	}
+	
 }
 
 void AEnemyAIController::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(),0);
 	if (!PlayerPawn)
 	{
 		UE_LOG(EnemyAILOG,Display,TEXT("Not Found Player Pawn"))
-	}
-	
-	OwningPawn = Cast<AEnemyAI>(GetPawn());
-	if (!OwningPawn)
-	{
-		UE_LOG(EnemyAILOG,Warning,TEXT(" Not Found Owning Pawn"))
 	}
 }
 
