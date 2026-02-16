@@ -25,23 +25,8 @@ void AEnemyAIController::BeginPlay()
 	{
 		UE_LOG(EnemyAILOG,Warning,TEXT(" Not Found Owning Pawn"))
 	}
-	if (OwningPawn && PlayerPawn)
-	{
-		GetWorld()->GetTimerManager().SetTimer(
-			UpdateVelocity_TimerHandle,
-			this,
-			&AEnemyAIController::MoveEnemyToPlayer,
-			0.5,
-			true);
-	}
 }
 
-void AEnemyAIController::BeginMovement()
-{
-}
-void AEnemyAIController::MoveEnemyToPlayer()
-{
-}
 
 void AEnemyAIController::Tick(float DeltaTime)
 {
@@ -52,18 +37,7 @@ void AEnemyAIController::Tick(float DeltaTime)
 	
 	FVector PlayerDirectionFromEnemy = (PlayerLocation - EnemyLocation) * DeltaTime * 7;
 	OwningPawn->EnemyMeshComponent->AddImpulse(PlayerDirectionFromEnemy,NAME_None, true);
-	
 }
 
-
-FVector AEnemyAIController::GetPlayerLocation()
-{
-	return FVector(0.0f, 0.0f, 0.0f);
-}
-
-void AEnemyAIController::BeginDestroy()
-{
-	Super::BeginDestroy();
-}
 
 

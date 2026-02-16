@@ -18,8 +18,7 @@ class STRANGEOS_API AEnemyAIController : public AAIController
 	GENERATED_BODY()
 public:
 	AEnemyAIController();
-	virtual void BeginDestroy() override;
-
+	
 	virtual void Tick(float DeltaTime) override;
 protected:
 	virtual void BeginPlay() override;
@@ -33,12 +32,4 @@ protected:
 	UPROPERTY()
 	FTimerHandle UpdateVelocity_TimerHandle;
 	
-	UFUNCTION()
-	void BeginMovement();
-	
-	UFUNCTION()
-	FVector GetPlayerLocation();
-	
-	UFUNCTION()
-	void MoveEnemyToPlayer();
 };
