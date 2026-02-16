@@ -8,8 +8,14 @@
 AEnemyAIController::AEnemyAIController()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bStartWithTickEnabled = false;
 }
 
+void AEnemyAIController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+	SetActorTickEnabled(true);
+}
 
 void AEnemyAIController::BeginPlay()
 {
@@ -26,6 +32,7 @@ void AEnemyAIController::BeginPlay()
 		UE_LOG(EnemyAILOG,Warning,TEXT(" Not Found Owning Pawn"))
 	}
 }
+
 
 void AEnemyAIController::Tick(float DeltaTime)
 {
