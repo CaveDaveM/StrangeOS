@@ -6,7 +6,6 @@
 #include "GameFramework/Character.h"
 #include "SideScrollingCharacter.generated.h"
 
-class UNiagaraSystem;
 class UCameraComponent;
 class UInputAction;
 struct FInputActionValue;
@@ -112,11 +111,8 @@ protected:
 	UPROPERTY()
 	EHealthState HealthState = EHealthState::FullHealth;
 	
-	UPROPERTY(EditAnywhere, Category = "Niagara Effects|Damaging ")
-	UNiagaraSystem* DamageEffect;
-	
-	UPROPERTY(EditAnywhere, Category = "Niagara Effects|Healing")
-	UNiagaraSystem* HealingEffect;
+	UFUNCTION()
+	void OnRep_OnVariableRepTest();
 
 public:
 	

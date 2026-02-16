@@ -3,8 +3,6 @@
 
 #include "Public/Enemy/EnemyAI.h"
 #include "Public/Enemy/EnemyAIController.h"
-#include "NiagaraFunctionLibrary.h"
-#include "NiagaraComponent.h"
 
 DEFINE_LOG_CATEGORY(EnemyAILOG);
 
@@ -44,14 +42,5 @@ void AEnemyAI::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
-
-void AEnemyAI::BeginDestroy()
-{
-	UNiagaraComponent* NiagaraHealing = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-		DestroyEffect, 
-		GetActorLocation(),
-		FRotator(0.f));
-	Super::BeginDestroy();
 }
 

@@ -6,8 +6,6 @@
 #include "GameFramework/Pawn.h"
 #include "EnemyAI.generated.h"
 
-class UNiagaraSystem;
-
 UCLASS()
 class STRANGEOS_API AEnemyAI : public APawn
 {
@@ -23,8 +21,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(EditAnywhere, Category = "Niagara Effects")
-	UNiagaraSystem* DestroyEffect;
+
 
 public:	
 	// Called every frame
@@ -32,8 +29,5 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
-	UFUNCTION()
-	virtual void BeginDestroy() override;
 
 };

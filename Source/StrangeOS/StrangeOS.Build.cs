@@ -18,8 +18,7 @@ public class StrangeOS : ModuleRules
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",
-			"Slate",
-			"Niagara"
+			"Slate"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

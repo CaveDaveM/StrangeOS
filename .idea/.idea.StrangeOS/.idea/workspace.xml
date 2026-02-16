@@ -12,13 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b11dfe1-1777-4f8f-ba41-113fa24cf082" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/BP_SideScrollingCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/BP_SideScrollingCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAIController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAIController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/StrangeOS.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/StrangeOS.Build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Dawid/EnemyAI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/IT/H3BXK0U5GPH3R6M4WC3LLR.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAIController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAIController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/C/HY/Q7CPP7VHOXBAMAJI90W626.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/C/HY/Q7CPP7VHOXBAMAJI90W626.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" afterDir="false" />
     </list>
@@ -189,8 +189,6 @@
       <updated>1771169128279</updated>
       <workItem from="1771169130125" duration="8560000" />
       <workItem from="1771187326126" duration="2280000" />
-      <workItem from="1771190742508" duration="1089000" />
-      <workItem from="1771193218153" duration="4961000" />
     </task>
     <servers />
   </component>
