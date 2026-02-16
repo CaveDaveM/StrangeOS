@@ -7,7 +7,7 @@
 
 AEnemyAIController::AEnemyAIController()
 {
-	
+	PrimaryActorTick.bCanEverTick = true;
 }
 
 
