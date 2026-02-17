@@ -7,6 +7,7 @@
 #include "Interface/DamageInterface.h"
 #include "FireWall.generated.h"
 
+class UNiagaraSystem;
 class USphereComponent;
 
 UCLASS()
@@ -26,6 +27,9 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	float DamageTimer = 0.5f;
+	
+
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -53,6 +57,7 @@ protected:
 	UPROPERTY()
 	FTimerHandle ApplyDamageToEnemy_TimerHandle;
 
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
