@@ -19,6 +19,7 @@
 #include "Enemy/EnemyAI.h"
 
 
+
 ASideScrollingCharacter::ASideScrollingCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -117,6 +118,13 @@ void ASideScrollingCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp
 {
 	if (AEnemyAI* OverlappedEnemyAI = Cast<AEnemyAI>(OtherActor))
 	{
+		ApplyDamageToPlayer(OverlappedEnemyAI);
+	}
+}
+
+
+void ASideScrollingCharacter::ApplyDamageToPlayer()
+{
 		if (HealthState == EHealthState::FullHealth)
 		{
 			HealthState = EHealthState::FirstHit;
@@ -127,11 +135,22 @@ void ASideScrollingCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp
 			HealthState = EHealthState::Death;
 			CheckHealthPlayerState();
 		}
-		OverlappedEnemyAI->Destroy();
-	}
 }
 
-
+void ASideScrollingCharacter::ApplyDamageToPlayer(AEnemyAI* EnemyDealer)
+{
+	if (HealthState == EHealthState::FullHealth)
+	{
+		HealthState = EHealthState::FirstHit;
+		CheckHealthPlayerState();
+	}
+	else if (HealthState == EHealthState::FirstHit)
+	{
+		HealthState = EHealthState::Death;
+		CheckHealthPlayerState();
+	}
+	EnemyDealer->Destroy();
+}
 
 void ASideScrollingCharacter::CheckHealthPlayerState()
 {
@@ -423,4 +442,11 @@ bool ASideScrollingCharacter::HasDoubleJumped() const
 bool ASideScrollingCharacter::HasWallJumped() const
 {
 	return bHasWallJumped;
+}
+
+AEnemyAI* ASideScrollingCharacter::DamageEnemy_Implementation(float Damage)
+{
+	IDamageInterface::DamageEnemy_Implementation(Damage);
+	ApplyDamageToPlayer();
+	return nullptr;
 }
