@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Interface/DamageInterface.h"
 #include "SideScrollingCharacter.generated.h"
 
+class AEnemyAI;
 class UNiagaraSystem;
 class UCameraComponent;
 class UInputAction;
@@ -22,7 +24,7 @@ enum class EHealthState : uint8
 	Death = 2 UMETA(DisplayName = "Death"),
 };
 UCLASS(abstract)
-class ASideScrollingCharacter : public ACharacter
+class ASideScrollingCharacter : public ACharacter, public IDamageInterface
 {
 	GENERATED_BODY()
 
@@ -111,6 +113,11 @@ protected:
 	// ReplicatedUsing = OnRep_OnVariableRepTest
 	UPROPERTY()
 	EHealthState HealthState = EHealthState::FullHealth;
+	
+	void ApplyDamageToPlayer();
+	
+	void ApplyDamageToPlayer(AEnemyAI* EnemyDealer);
+	
 
 public:
 	
@@ -203,4 +210,5 @@ public:
 	/** Returns true if the character has just wall jumped */
 	UFUNCTION(BlueprintPure, Category="Side Scrolling")
 	bool HasWallJumped() const;
+	virtual AEnemyAI* DamageEnemy_Implementation(float Damage) override;
 };

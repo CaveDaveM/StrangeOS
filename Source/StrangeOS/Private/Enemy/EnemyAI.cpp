@@ -54,7 +54,6 @@ AEnemyAI* AEnemyAI::DamageEnemy_Implementation(float Damage)
 #endif
 	return this;
 }
-
 void AEnemyAI::CheckHealth()
 {
 	if (Health <= 0.f)
@@ -72,11 +71,11 @@ void AEnemyAI::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AEnemyAI::BeginDestroy()
 {
+	Super::BeginDestroy();
 	UNiagaraComponent* NiagaraHealing = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
 		DestroyEffect, 
 		GetActorLocation(),
 		FRotator(0.f));
-	Super::BeginDestroy();
 }
 
 
