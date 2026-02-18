@@ -26,7 +26,13 @@ public:
 	USphereComponent* BombSphereComponent;
 	
 	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* HitBoxMesh;
+	
+	UPROPERTY(EditAnywhere)
 	float OverlapSphereSize = 300.0f;
+	
+	UPROPERTY(EditAnywhere)
+	float HitBoxExposeTime = 2.0f;
 
 
 protected:
@@ -35,11 +41,16 @@ protected:
 	
 	FTimerHandle BombExplode_TimerHandle;
 	
+	FTimerHandle HitBoxExpose_TimerHandle;
+	
 	UPROPERTY(EditAnywhere, Category = "Niagara Effects")
 	UNiagaraSystem* ExplosionEffect;
 	
 	UFUNCTION()
 	void ExplodeBomb();
+	
+	UFUNCTION()
+	void SetHitBoxVisibility();
 	
 	UFUNCTION()
 	void ApplyDamageToActors(TArray<AActor*> FoundActors);
