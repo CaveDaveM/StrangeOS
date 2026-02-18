@@ -25,6 +25,12 @@ ABomberBomb::ABomberBomb()
 	BombSphereComponent->SetupAttachment(BombMesh);
 	BombSphereComponent->SetGenerateOverlapEvents(true);
 	
+	HitBoxMesh = CreateDefaultSubobject<UStaticMeshComponent>("HitBoxMesh");
+	HitBoxMesh->SetupAttachment(BombMesh);
+	HitBoxMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+	HitBoxMesh->SetVisibility(false);
+	
+	
 }
 
 // Called when the game starts or when spawned
@@ -36,6 +42,14 @@ void ABomberBomb::BeginPlay()
 	this,
 	&ABomberBomb::ExplodeBomb,
 	4.0f);
+	
+	GetWorld()->GetTimerManager().SetTimer(
+		HitBoxExpose_TimerHandle,
+		this,
+		&ABomberBomb::SetHitBoxVisibility,
+		HitBoxExposeTime,
+		true,
+		1.0f);
 	
 }
 
@@ -68,6 +82,18 @@ void ABomberBomb::ExplodeBomb()
 		GetActorLocation(),
 		FRotator(0.f));
 	Destroy();
+}
+
+void ABomberBomb::SetHitBoxVisibility()
+{
+	if (HitBoxMesh->IsVisible())
+	{
+		HitBoxMesh->SetVisibility(false);
+	}
+	else
+	{
+		HitBoxMesh->SetVisibility(true);
+	}
 }
 
 void ABomberBomb::ApplyDamageToActors(TArray<AActor*> FoundActors)
