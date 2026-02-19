@@ -7,6 +7,7 @@
 #include "Interface/DamageInterface.h"
 #include "EnemyAI.generated.h"
 
+class ACoins;
 class UNiagaraSystem;
 
 UCLASS()
@@ -44,5 +45,11 @@ public:
 	
 	UFUNCTION()
 	void CheckHealth();
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ACoins> ClassCoin;
+	
+	UPROPERTY(EditAnywhere)
+	int32 AmountOfCoins = 10;
 
 };

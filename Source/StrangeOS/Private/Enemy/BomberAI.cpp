@@ -30,7 +30,6 @@ void ABomberAI::BeginPlay()
 
 void ABomberAI::SpawnBomb()
 {
-	GEngine->AddOnScreenDebugMessage(-1,10.0f,FColor::Green,"Spawning Bomber");
 	FVector Location = GetActorLocation();
 	FRotator Rotation = FRotator::ZeroRotator;
 	FActorSpawnParameters SpawnInfo;
