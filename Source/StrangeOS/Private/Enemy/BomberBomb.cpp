@@ -61,7 +61,8 @@ void ABomberBomb::ExplodeBomb()
 
 	// Add the object types you want to detect
 	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
-	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_PhysicsBody));
+
 
 	// Optionally ignore self
 	ActorsToIgnore.Add(this);
@@ -102,6 +103,7 @@ void ABomberBomb::ApplyDamageToActors(TArray<AActor*> FoundActors)
 	{
 		if (Actor->GetClass()->ImplementsInterface(UDamageInterface::StaticClass()))
 		{
+			GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Red,TEXT("ApplyDamageToActors"));
 			IDamageInterface::Execute_DamageEnemy(Actor,0);
 		}
 	}
