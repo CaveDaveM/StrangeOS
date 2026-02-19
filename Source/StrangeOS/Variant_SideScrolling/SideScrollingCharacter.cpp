@@ -32,7 +32,7 @@ ASideScrollingCharacter::ASideScrollingCharacter()
 
 	// configure the collision capsule
 	GetCapsuleComponent()->SetCapsuleSize(35.0f, 90.0f);
-	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
+	GetMesh()->SetCollisionObjectType(EOSCollisionChannel::ECC_Player);
 
 	// configure the Pawn properties
 	bUseControllerRotationYaw = false;
@@ -82,12 +82,6 @@ void ASideScrollingCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 
 	// clear the wall jump timer
 	GetWorld()->GetTimerManager().ClearTimer(WallJumpTimer);
-	
-	GetWorld()->GetTimerManager().SetTimer(Health_TimerHandle,
-		this,
-		&ASideScrollingCharacter::HealthRegen,
-		HealthRegenTimer,
-		true);
 }
 
 void ASideScrollingCharacter::BeginPlay()
@@ -131,57 +125,63 @@ void ASideScrollingCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp
 
 void ASideScrollingCharacter::ApplyDamageToPlayer()
 {
-	
-	UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-	DamageEffect,
-	GetActorLocation(),
-	FRotator(0.f));
-	
-	CurrentHealth -= 1;
-	CheckHealthPlayerState();
-
+		if (HealthState == EHealthState::FullHealth)
+		{
+			HealthState = EHealthState::FirstHit;
+			CheckHealthPlayerState();
+		}
+		else if (HealthState == EHealthState::FirstHit)
+		{
+			HealthState = EHealthState::Death;
+			CheckHealthPlayerState();
+		}
 }
 
 void ASideScrollingCharacter::ApplyDamageToPlayer(AEnemyAI* EnemyDealer)
 {
-	
-	UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-	DamageEffect,
-	GetActorLocation(),
-	FRotator(0.f));
-	
-	CurrentHealth -= 1;
-	CheckHealthPlayerState();
+	if (HealthState == EHealthState::FullHealth)
+	{
+		HealthState = EHealthState::FirstHit;
+		CheckHealthPlayerState();
+	}
+	else if (HealthState == EHealthState::FirstHit)
+	{
+		HealthState = EHealthState::Death;
+		CheckHealthPlayerState();
+	}
 	EnemyDealer->Destroy();
 }
 
 void ASideScrollingCharacter::CheckHealthPlayerState()
 {
-	if (CurrentHealth == 1)
+	switch (HealthState)
 	{
-		// play final hit animation 
-		GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Red,TEXT("final hit"));
-	}
-	if (CurrentHealth <= 0)
-	{
-		//Death
-		GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Red,TEXT("Death hit"));
+	case EHealthState::FullHealth:
+		{
+			UNiagaraComponent* NiagaraHealing = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+				DamageEffect,
+				GetActorLocation(),
+				FRotator(0.f));
+			break;
+		}
+	case EHealthState::FirstHit:
+		{
+			UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+				DamageEffect,
+				GetActorLocation(),
+				FRotator(0.f));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "First hit");
+			break;
+			
+		}
+
+	case EHealthState::Death:
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Death hit");
+			break;
+		}
 	}
 	
-}
-void ASideScrollingCharacter::HealthRegen()
-{
-	if (CurrentHealth < MaxHealth)
-	{
-		CurrentHealth += 1;
-	}
-	if (CurrentHealth >= MaxHealth)
-	{
-		UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-		HealingEffect,
-		GetActorLocation(),
-		FRotator(0.f));
-	}
 }
 
 void ASideScrollingCharacter::NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
@@ -246,7 +246,6 @@ void ASideScrollingCharacter::DropReleased(const FInputActionValue& Value)
 	// reset the input
 	DoDrop(0.0f);
 }
-
 
 
 void ASideScrollingCharacter::DoMove(float Forward)
@@ -448,7 +447,6 @@ bool ASideScrollingCharacter::HasWallJumped() const
 AEnemyAI* ASideScrollingCharacter::DamageEnemy_Implementation(float Damage)
 {
 	IDamageInterface::DamageEnemy_Implementation(Damage);
-	GEngine->AddOnScreenDebugMessage(-1,4.0,FColor::Yellow,TEXT("applying damage to player"));
 	ApplyDamageToPlayer();
 	return nullptr;
 }

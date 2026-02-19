@@ -16,7 +16,13 @@ struct FInputActionValue;
 /**
  *  A player-controllable character side scrolling game
  */
-
+UENUM(BlueprintType)
+enum class EHealthState : uint8
+{
+	FullHealth = 0 UMETA(DisplayName = "Full Health"),
+	FirstHit = 1 UMETA(DisplayName = "FirstHit"),
+	Death = 2 UMETA(DisplayName = "Death"),
+};
 UCLASS(abstract)
 class ASideScrollingCharacter : public ACharacter, public IDamageInterface
 {
@@ -105,6 +111,13 @@ protected:
 	/** If true, this character is moving along the side scrolling axis */
 	bool bMovingHorizontally = false;
 	// ReplicatedUsing = OnRep_OnVariableRepTest
+	UPROPERTY()
+	EHealthState HealthState = EHealthState::FullHealth;
+	
+	void ApplyDamageToPlayer();
+	
+	void ApplyDamageToPlayer(AEnemyAI* EnemyDealer);
+	
 
 public:
 	
@@ -149,28 +162,9 @@ protected:
 	UNiagaraSystem* HealingEffect;
 	
 	UFUNCTION(BlueprintCallable, Category="Input")
-	
-	//Health manager system
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-	
-	void ApplyDamageToPlayer();
-	
-	void ApplyDamageToPlayer(AEnemyAI* EnemyDealer);
-	
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
-	int32 CurrentHealth = 2;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
-	int32 MaxHealth = 2;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
-	float HealthRegenTimer = 10.0f;
-	
-	FTimerHandle Health_TimerHandle;
-	
-	UFUNCTION()
-	void HealthRegen();
+
 public:
 
 	/** Handles move inputs from either controls or UI interfaces */
