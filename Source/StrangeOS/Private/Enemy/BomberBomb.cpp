@@ -49,7 +49,7 @@ void ABomberBomb::BeginPlay()
 		&ABomberBomb::SetHitBoxVisibility,
 		HitBoxExposeTime,
 		true,
-		1.0f);
+		.5f);
 	
 }
 

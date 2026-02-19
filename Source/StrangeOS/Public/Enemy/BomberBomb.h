@@ -21,7 +21,7 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* BombMesh;
-	
+
 	UPROPERTY(EditAnywhere)
 	USphereComponent* BombSphereComponent;
 	
@@ -32,7 +32,7 @@ public:
 	float OverlapSphereSize = 300.0f;
 	
 	UPROPERTY(EditAnywhere)
-	float HitBoxExposeTime = 2.0f;
+	float HitBoxExposeTime = 1.0f;
 
 
 protected:
