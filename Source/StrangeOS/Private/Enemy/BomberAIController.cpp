@@ -46,6 +46,7 @@ void ABomberAIController::BeginPlay()
 
 void ABomberAIController::CheckTravelingLocation()
 {
+	GEngine->AddOnScreenDebugMessage(-1,10.0f, FColor::Yellow, TEXT("CheckTravelingLocation"));
 	FVector CurrentActorLocation = OwningPawn->GetActorLocation();
 	if (CurrentActorLocation.X <= LocationLeft.X)
 	{

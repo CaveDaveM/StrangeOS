@@ -6,7 +6,6 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
 #include "OSCollisionChannels.h"
-#include "Components/Coins.h"
 
 DEFINE_LOG_CATEGORY(EnemyAILOG);
 
@@ -59,14 +58,6 @@ void AEnemyAI::CheckHealth()
 {
 	if (Health <= 0.f)
 	{
-		for (int i = 0; i < AmountOfCoins; ++i)
-		{
-			FVector Location = GetActorLocation();
-			FRotator Rotation = FRotator::ZeroRotator;
-			FActorSpawnParameters SpawnInfo;
-			SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			ACoins* SpawnedCoin = GetWorld()->SpawnActor<ACoins>(ClassCoin, Location, Rotation, SpawnInfo);
-		}
 		Destroy();
 	}
 }
