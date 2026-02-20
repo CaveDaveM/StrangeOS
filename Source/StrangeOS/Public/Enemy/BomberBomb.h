@@ -34,7 +34,10 @@ public:
 	UPROPERTY(EditAnywhere)
 	float HitBoxExposeTime = 1.0f;
 
-
+	UPROPERTY(EditAnywhere)
+	USoundBase* ExplosionSound;
+	
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -57,6 +60,8 @@ protected:
 	
 	UPROPERTY()
 	ASideScrollingCharacter* PlayerCharacter;
+	
+	
 
 public:	
 	// Called every frame

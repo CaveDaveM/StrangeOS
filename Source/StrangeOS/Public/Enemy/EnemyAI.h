@@ -7,6 +7,7 @@
 #include "Interface/DamageInterface.h"
 #include "EnemyAI.generated.h"
 
+class AHealingOrb;
 class ACoins;
 class UNiagaraSystem;
 
@@ -48,6 +49,9 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ACoins> ClassCoin;
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AHealingOrb> HealingOrbClass;
 	
 	UPROPERTY(EditAnywhere)
 	int32 AmountOfCoins = 10;

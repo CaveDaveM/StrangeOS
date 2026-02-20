@@ -17,6 +17,9 @@ class STRANGEOS_API ABomberAI : public AEnemyAI
 public:
 	// Sets default values for this pawn's properties
 	ABomberAI();
+	
+	UPROPERTY(EditAnywhere)
+	float SpawnTimer = 2.0f;
 
 protected:
 	// Called when the game starts or when spawned
