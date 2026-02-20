@@ -13,19 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b11dfe1-1777-4f8f-ba41-113fa24cf082" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/BP_BomberAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/BP_BomberAI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/BP_BomberBomb.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/BP_BomberBomb.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/MyEnemyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/MyEnemyAI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/BP_SideScrollingCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/BP_SideScrollingCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/2/AM/9YGDW7FMEY1CZD31VUYO11.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/2/AM/9YGDW7FMEY1CZD31VUYO11.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Components/MoneyDropComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Components/MoneyDropComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAIController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberBomb.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberBomb.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Components/MoneyDropComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Components/MoneyDropComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +55,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Dawid-Branch-2",
+    "git-widget-placeholder": "Dawid-Branch-3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -221,6 +208,7 @@
       <workItem from="1771327116352" duration="16479000" />
       <workItem from="1771360847194" duration="1703000" />
       <workItem from="1771519723864" duration="5175000" />
+      <workItem from="1771594501210" duration="3554000" />
     </task>
     <servers />
   </component>
@@ -254,7 +242,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp</url>
-          <line>180</line>
+          <line>168</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
