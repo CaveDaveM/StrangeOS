@@ -8,6 +8,7 @@
 #include "OSCollisionChannels.h"
 #include "Components/SphereComponent.h"
 #include "Interface/DamageInterface.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
@@ -82,6 +83,8 @@ void ABomberBomb::ExplodeBomb()
 		ExplosionEffect, 
 		GetActorLocation(),
 		FRotator(0.f));
+	
+	UGameplayStatics::PlaySound2D(this,ExplosionSound);
 	Destroy();
 }
 

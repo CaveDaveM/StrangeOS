@@ -16,6 +16,7 @@
 #include "OSCollisionChannels.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "TimerManager.h"
+#include "Kismet/GameplayStatics.h"
 #include "Enemy/EnemyAI.h"
 
 
@@ -82,12 +83,6 @@ void ASideScrollingCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 
 	// clear the wall jump timer
 	GetWorld()->GetTimerManager().ClearTimer(WallJumpTimer);
-	
-	GetWorld()->GetTimerManager().SetTimer(Health_TimerHandle,
-		this,
-		&ASideScrollingCharacter::HealthRegen,
-		HealthRegenTimer,
-		true);
 }
 
 void ASideScrollingCharacter::BeginPlay()
@@ -137,8 +132,11 @@ void ASideScrollingCharacter::ApplyDamageToPlayer()
 	GetActorLocation(),
 	FRotator(0.f));
 	
+	
 	CurrentHealth -= 1;
 	CheckHealthPlayerState();
+	
+	UGameplayStatics::PlaySound2D(this,SelfDamageSound);
 
 }
 
@@ -153,6 +151,9 @@ void ASideScrollingCharacter::ApplyDamageToPlayer(AEnemyAI* EnemyDealer)
 	CurrentHealth -= 1;
 	CheckHealthPlayerState();
 	EnemyDealer->Destroy();
+	
+	UGameplayStatics::PlaySound2D(this,SelfDamageSound);
+
 }
 
 void ASideScrollingCharacter::CheckHealthPlayerState()
@@ -451,4 +452,16 @@ AEnemyAI* ASideScrollingCharacter::DamageEnemy_Implementation(float Damage)
 	GEngine->AddOnScreenDebugMessage(-1,4.0,FColor::Yellow,TEXT("applying damage to player"));
 	ApplyDamageToPlayer();
 	return nullptr;
+}
+
+void ASideScrollingCharacter::Heal_Implementation(int32 HealingAmount)
+{
+	IHealingInterface::Heal_Implementation(HealingAmount);
+	
+	int32 PredictedHealth = CurrentHealth + HealingAmount;  
+	if (PredictedHealth < MaxHealth)
+	{
+		CurrentHealth += HealingAmount;
+		UGameplayStatics::PlaySound2D(this,HealSound);
+	}
 }

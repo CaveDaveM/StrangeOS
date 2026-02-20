@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Interface/DamageInterface.h"
+#include "Interface/HealingInterface.h"
 #include "SideScrollingCharacter.generated.h"
 
 class AEnemyAI;
@@ -18,7 +19,7 @@ struct FInputActionValue;
  */
 
 UCLASS(abstract)
-class ASideScrollingCharacter : public ACharacter, public IDamageInterface
+class ASideScrollingCharacter : public ACharacter, public IDamageInterface, public IHealingInterface
 {
 	GENERATED_BODY()
 
@@ -216,5 +217,14 @@ public:
 	/** Returns true if the character has just wall jumped */
 	UFUNCTION(BlueprintPure, Category="Side Scrolling")
 	bool HasWallJumped() const;
+	
 	virtual AEnemyAI* DamageEnemy_Implementation(float Damage) override;
+	
+	virtual void Heal_Implementation(int32 HealingAmount) override;
+	
+	UPROPERTY(EditAnywhere, Category = "Health")
+	USoundBase* HealSound;
+	
+	UPROPERTY(EditAnywhere)
+	USoundBase* SelfDamageSound;
 };

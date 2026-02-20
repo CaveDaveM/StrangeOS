@@ -6,7 +6,9 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
 #include "OSCollisionChannels.h"
+#include "Math/UnrealMathUtility.h"
 #include "Components/Coins.h"
+#include "Components/HealingOrb.h"
 
 DEFINE_LOG_CATEGORY(EnemyAILOG);
 
@@ -68,6 +70,19 @@ void AEnemyAI::CheckHealth()
 			ACoins* SpawnedCoin = GetWorld()->SpawnActor<ACoins>(ClassCoin, Location, Rotation, SpawnInfo);
 		}
 		Destroy();
+		
+		const int32 Min = 1;
+		const int32 Max = 10;
+		const int32 RandomInt = FMath::RandRange(Min, Max);
+		
+		if (RandomInt == 5)
+		{
+			FVector Location = GetActorLocation();
+			FRotator Rotation = FRotator::ZeroRotator;
+			FActorSpawnParameters SpawnInfo;
+			SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			AHealingOrb* SpawnedCoin = GetWorld()->SpawnActor<AHealingOrb>(HealingOrbClass, Location, Rotation, SpawnInfo);
+		}
 	}
 }
 

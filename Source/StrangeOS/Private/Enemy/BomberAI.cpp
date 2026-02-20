@@ -24,7 +24,7 @@ void ABomberAI::BeginPlay()
 		SpawnBomber_TimerHandle,
 		this,
 		&ABomberAI::SpawnBomb,
-		0.5f,
+		SpawnTimer,
 		true);
 }
 
