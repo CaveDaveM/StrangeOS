@@ -29,7 +29,7 @@ public:
 	UPROPERTY()
 	USceneComponent* Root;
 	
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UBoxComponent* Laser_BoxComponent;
 	
 	UPROPERTY(EditAnywhere)

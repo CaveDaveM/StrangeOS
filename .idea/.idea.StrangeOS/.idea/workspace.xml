@@ -11,18 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b11dfe1-1777-4f8f-ba41-113fa24cf082" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/BP_BomberAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/BP_BomberAI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberBomb.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberBomb.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/EnemyAI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/BomberAI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/BomberAI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/BomberBomb.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/BomberBomb.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Enemy/EnemyAI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" afterDir="false" />
-    </list>
+    <list default="true" id="9b11dfe1-1777-4f8f-ba41-113fa24cf082" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,7 +208,7 @@
       <workItem from="1771519723864" duration="5175000" />
       <workItem from="1771594501210" duration="3554000" />
       <workItem from="1771624675434" duration="1640000" />
-      <workItem from="1771626465384" duration="1048000" />
+      <workItem from="1771626465384" duration="1403000" />
     </task>
     <servers />
   </component>
