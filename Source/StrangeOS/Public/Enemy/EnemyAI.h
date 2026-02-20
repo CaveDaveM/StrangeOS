@@ -21,12 +21,13 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* EnemyMeshComponent;
+	
+	UPROPERTY(EditAnywhere)
+	float Health = 100.0f;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(BlueprintReadWrite)
-	float Health = 100.0f;
 
 public:	
 	// Called every frame
