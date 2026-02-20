@@ -464,4 +464,9 @@ void ASideScrollingCharacter::Heal_Implementation(int32 HealingAmount)
 		CurrentHealth += HealingAmount;
 		UGameplayStatics::PlaySound2D(this,HealSound);
 	}
+	if (PredictedHealth > MaxHealth)
+	{
+		CurrentHealth = MaxHealth;
+		UGameplayStatics::PlaySound2D(this,HealSound);
+	}
 }
