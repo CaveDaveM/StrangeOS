@@ -159,7 +159,7 @@ protected:
 	
 	void ApplyDamageToPlayer(AEnemyAI* EnemyDealer);
 	
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	UPROPERTY(BlueprintReadWrite, Category = "Health")
 	int32 CurrentHealth = 2;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
