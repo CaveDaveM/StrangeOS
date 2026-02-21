@@ -165,13 +165,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
 	int32 MaxHealth = 2;
 	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
-	float HealthRegenTimer = 10.0f;
-	
 	FTimerHandle Health_TimerHandle;
-	
-	UFUNCTION()
-	void HealthRegen();
 public:
 
 	/** Handles move inputs from either controls or UI interfaces */

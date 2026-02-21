@@ -19,7 +19,6 @@ ABomberAIController::ABomberAIController()
 void ABomberAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	Super::OnPossess(InPawn);
 	SetActorTickEnabled(true);
 	
 	OwningPawn = Cast<AEnemyAI>(InPawn);
@@ -50,6 +49,7 @@ void ABomberAIController::CheckTravelingLocation()
 	if (CurrentActorLocation.X <= LocationLeft.X)
 	{
 		CurrentTravelingLocation = LocationRight;
+		
 	}
 	if (CurrentActorLocation.X >= LocationRight.X)
 	{

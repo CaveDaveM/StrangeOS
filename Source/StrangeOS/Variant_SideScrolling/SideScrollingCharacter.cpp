@@ -170,20 +170,6 @@ void ASideScrollingCharacter::CheckHealthPlayerState()
 	}
 	
 }
-void ASideScrollingCharacter::HealthRegen()
-{
-	if (CurrentHealth < MaxHealth)
-	{
-		CurrentHealth += 1;
-	}
-	if (CurrentHealth >= MaxHealth)
-	{
-		UNiagaraComponent* NiagaraDamage = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-		HealingEffect,
-		GetActorLocation(),
-		FRotator(0.f));
-	}
-}
 
 void ASideScrollingCharacter::NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {

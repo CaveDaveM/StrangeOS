@@ -11,7 +11,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b8e7cfb-5c93-4a61-8037-f972984c6d0b" name="Changes" comment="" />
+    <list default="true" id="0b8e7cfb-5c93-4a61-8037-f972984c6d0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Dawid/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Variant_SideScrolling/SideScrollingCharacter.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;NewMaster&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "d",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.StrangeOS">
     <configuration name="StrangeOS" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -144,6 +150,7 @@
       <workItem from="1771629757951" duration="176000" />
       <workItem from="1771668633581" duration="2213000" />
       <workItem from="1771673681740" duration="6915000" />
+      <workItem from="1771704858837" duration="3906000" />
     </task>
     <servers />
   </component>
@@ -156,9 +163,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/StrangeOS/Private/Terrain/FireWall.cpp</url>
-          <line>52</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/Source/StrangeOS/Private/Enemy/BomberAIController.cpp</url>
+          <line>47</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
