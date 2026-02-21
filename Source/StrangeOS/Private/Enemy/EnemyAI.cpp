@@ -72,10 +72,10 @@ void AEnemyAI::CheckHealth()
 		Destroy();
 		
 		const int32 Min = 1;
-		const int32 Max = 10;
+		const int32 Max = 5;
 		const int32 RandomInt = FMath::RandRange(Min, Max);
 		
-		if (RandomInt == 5)
+		if (RandomInt == 2)
 		{
 			FVector Location = GetActorLocation();
 			FRotator Rotation = FRotator::ZeroRotator;

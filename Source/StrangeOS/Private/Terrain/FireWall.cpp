@@ -2,12 +2,10 @@
 
 
 #include "Terrain/FireWall.h"
-
-#include "NiagaraComponent.h"
-#include "NiagaraFunctionLibrary.h"
 #include "OSCollisionChannels.h"
 #include "Components/SphereComponent.h"
 #include "Enemy/EnemyAI.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
 AFireWall::AFireWall()
@@ -24,7 +22,7 @@ AFireWall::AFireWall()
 	OverlapComponent->SetupAttachment(StaticMeshComponent);
 	OverlapComponent->SetGenerateOverlapEvents(true);
 	OverlapComponent->SetCollisionResponseToChannel(EOSCollisionChannel::ECC_Enemy,ECR_Overlap);
-	
+
 	
 }
 
@@ -68,7 +66,15 @@ void AFireWall::DamageEnemyOverTime()
 	{
 		for (AEnemyAI* Enemies : OverlappedEnemies)
 		{
-			AEnemyAI* hitenemy = IDamageInterface::Execute_DamageEnemy(Enemies,DamageOfObstacleOverTime);
+			if (Enemies->Health <= 30.0f)
+			{
+				OverlappedEnemies.Remove(Enemies);
+				Execute_DamageEnemy(Enemies,DamageOfObstacleOverTime);
+			}
+			else
+			{
+				Execute_DamageEnemy(Enemies,DamageOfObstacleOverTime);
+			}
 		}
 	}
 }
