@@ -11,17 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b8e7cfb-5c93-4a61-8037-f972984c6d0b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StrangeOS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_FireWall.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_FireWall.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/MainMenu/LvL_MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/MainMenu/LvL_MainMenu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Dawid/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Dawid/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/M_FlatCol.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/M_FlatCol.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/Enemies/Virus/Virus_enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Variant_SideScrolling/Blueprints/Enemies/Virus/Virus_enemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Private/Terrain/FireWall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Private/Terrain/FireWall.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/StrangeOS/Public/Terrain/FireWall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/StrangeOS/Public/Terrain/FireWall.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StrangeOS.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/StrangeOS.uproject" afterDir="false" />
-    </list>
+    <list default="true" id="0b8e7cfb-5c93-4a61-8037-f972984c6d0b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +35,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dawid-Branch-5&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;NewMaster&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -137,7 +127,10 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
   </component>
